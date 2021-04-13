@@ -11,38 +11,60 @@ from sklearn.neighbors import KNeighborsClassifier
         
 def Marvellous():
     
-    data=pd.read_csv("MarvellousInfosystems_PlayPredictor.csv")
+    data=pd.read_csv("MarvellousInfosystems_PlayPredictor.csv",index_col=0)
+    print("size of dataset is :",len(data))
+    
+    #clean prepear and mainpulate data
+    
+    features_name=['Wether','Temperature']
+    print("name of features is :",features_name)
+    
+    wether=data.Wether
+    temperature=data.Temperature
+    play=data.Play
+    
      # Converting string labels into numbers.
     le = preprocessing.LabelEncoder()
-    # Encode labels in column 'wether','temperature'. 
-    data['Wether']= le.fit_transform(data['Wether']) 
-    data['Temperature']=le.fit_transform(data['Temperature'])
+    
+    # Encode labels in column 'wether'. 
+    wether_encodded=le.fit_transform(wether)
+    print(wether_encodded)
+    
+    #encode labels in column 'temperature'
+    temp_encodded=le.fit_transform(temperature)
+    label=le.fit_transform(play)
+    print(temp_encodded)
+   
+    
+    #combinig weather and temp into single listof tuples
+    features=list(zip(wether_encodded,temp_encodded))
+    
     #drop unwanted column
     data.drop(data.filter(regex="Unnamed"),axis=1, inplace=True)
     print(data.head())
     
-    X = data.iloc[:, :-1].values
-    y = data.iloc[:, 2].values
+    #train data
+    model=KNeighborsClassifier(n_neighbors=3)
+    #model using training sets
+    model.fit(features,label)
     
-    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.5)
+    #test data
+    predicted=model.predict([[0,2]]) #0=overcast,2=mild
+    print(predicted)
     
-    cobj=KNeighborsClassifier(n_neighbors=3,metric='euclidean') #n_neighborse=k=3
-    
-    cobj.fit(X_train,y_train)
-    
-    prediction=cobj.predict(X_test)
-    
-    Accuracy=accuracy_score(y_test,prediction) #0=overcast,1=rainy2=sunny,1=hot,
-    return Accuracy
+    if predicted==1:
+        print("you can play")
+    else:
+        print("Dont play")
         
 def main():     
-    accuracy=Marvellous()
-    print("accuracy of the knn is :",accuracy*100,"%")
+    Marvellous()
+    print("Machine learinig application")
+    print("play predict application used for KNN")
 
 
 if __name__=="__main__":
     main()
-
 
 
 
