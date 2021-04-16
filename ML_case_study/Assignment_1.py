@@ -1,4 +1,4 @@
-//KNN Algorithm implementation in Python
+#KNN Algorithm implementation in Python
 
 from sklearn import preprocessing
 import pandas as pd
