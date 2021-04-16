@@ -1,4 +1,4 @@
-There is one data set of wether conditions.
+#There is one data set of wether conditions.
 That dataset contains information as wether and we have to decides whether to play or not.
 Data set contains the target variable as Play which indicates whether to play or not.
 
