@@ -10,3 +10,6 @@ Television
 Depends on the above three features Sales feature indicates the increased sale amount.
 We have to design Machine Learning application which uses Classification
 technique.
+
+In this case we have to define our own linear regression algorithm.
+Display value of R square for trained data.
