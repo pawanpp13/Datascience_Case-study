@@ -5,5 +5,5 @@ We will perform all the steps from Data gathering to Model deployment. During Mo
 we compare various machine learning algorithms on the basis of accuracy_score metric and find the best one.
 
 
-we used the 4 algorithms like Supervised algorithm knn,decisiontree,logistic regression and one is unsupervised Random Forest algorithm used for the predict best Accurate values
-and observed wich is best model to predict best score.
+we used the 4 algorithms like Supervised algorithm knn,decisiontree,logistic regression and  Random Forest algorithm used for the predict best Accurate values
+and observed wich is best model to predict best score.with confusion matrix
